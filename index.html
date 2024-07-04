@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة رئيسية مع قسم جانبي</title>
+    <!-- إضافة Bootstrap عبر CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .main-section {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        .main-section h1 {
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        .main-section p {
+            margin-bottom: 20px;
+            text-align: right;
+
+        }
+        .main-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+.contact-info{
+    font-size: 20px;
+}
+        .side-section {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            height: 100%;
+        }
+        .side-section img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        /* النمط الخاص بعرض الصور بملء الشاشة */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.8); 
+        }
+        .modal-content {
+            margin: 15% auto; 
+            display: block;
+            width: 80%; 
+            max-width: 700px; 
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+  
+            <!-- القسم الرئيسي -->
+            <div class="col-md-8 main-section">
+                <h1>وايت ماء صغير 6 طن شمال وشرق الرياض</h1>
+                <p>نوفر لك جميع أحجام وايتات المياه ونقوم بتوصيلها إلى جميع مناطق شمال وشرق الرياض.</p>
+                <img src="p1.jpeg" alt="صورة تمهيدية" class="img-fluid">
+                <div class="contact-info">
+                    <p>[الاسم] سياره 2009</p>
+                    <p>[الجوال] 050 233 8089</p>
+                    <p>[الاسم] سياره 2004</p>
+                    <p>[الجوال] 050 226 5798</p>
+                    <p>[الجوال] 0549430124</p>
+                </div>
+            </div>
+                      <!-- القسم الجانبي -->
+                      <div class="col-md-4 side-section">
+                        <img src="m2.jpeg" alt="صورة جانبية 1" class="side-image">
+                        <img src="m3.jpeg" alt="صورة جانبية 2" class="side-image">
+                        <img src="m4.jpeg" alt="صورة جانبية 3" class="side-image">
+                        <img src="m5.jpeg" alt="صورة جانبية 4" class="side-image">
+                        <img src="m6.jpeg" alt="صورة جانبية 5" class="side-image">
+                        <img src="m7.jpeg" alt="صورة جانبية 6" class="side-image">
+                        <img src="m8.jpeg" alt="صورة جانبية 7" class="side-image">
+                    </div>
+             
+        </div>
+    </div>
+
+    <!-- نموذج عرض الصور بملء الشاشة -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgModalContent">
+    </div>
+
+    <!-- إضافة Bootstrap JS و jQuery عبر CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- JavaScript لعرض الصور بملء الشاشة -->
+    <script>
+        // الحصول على العنصر الذي يظهر الصورة بملء الشاشة
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("imgModalContent");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // دالة لعرض الصورة بملء الشاشة عند النقر عليها
+        document.querySelectorAll(".side-image").forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        // دالة لإغلاق العرض بملء الشاشة
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // إغلاق العرض بملء الشاشة عند النقر في أي مكان خارج الصورة
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
